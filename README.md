@@ -25,18 +25,18 @@ El flujo de datos sigue una estructura lineal desde la parametrización del usua
 
 ```mermaid
 graph LR
-    User[Usuario / Stakeholder] -->|Input Params| UI[Streamlit Dashboard]
-    UI -->|Request| Logic[Logic Core (src)]
-    
+    User["Usuario / Stakeholder"] -->|Input Params| UI["Streamlit Dashboard"]
+    UI -->|Request| Logic["Logic Core (src)"]
+
     subgraph "Logic Core"
-        Logic --> Discrete[Discrete Systems Engine]
-        Logic --> Continuous[ODE Solver Engine]
-        Logic --> Stochastic[Stochastic Engine]
+        Logic --> Discrete["Discrete Systems Engine"]
+        Logic --> Continuous["ODE Solver Engine"]
+        Logic --> Stochastic["Stochastic Engine"]
     end
-    
-    Discrete -->|Vectorized Calc| NumPy[NumPy / SciPy]
+
+    Discrete -->|Vectorized Calc| NumPy["NumPy / SciPy"]
     Continuous -->|Integration| NumPy
     Stochastic -->|Iteration| NumPy
-    
-    NumPy -->|Data Arrays| Viz[Plotly Visualization Layer]
+
+    NumPy -->|Data Arrays| Viz["Plotly Visualization Layer"]
     Viz -->|Render| UI
